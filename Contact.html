@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>:: My Page ::</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.2.1/jquery.mobile-1.2.1.min.js"></script>
+
+    <script src="BCM.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.min.js"></script>
+
+    <script>
+        var uri = 'http://localhost:62329/api/products';
+
+
+
+        function addRecord() {
+            // alert('Hi');
+             var id = $('#prodId').val();
+            var firstName = $('#fname').val();
+            var lastName = $('#lname').val();
+            var mobileNo = $('#mobileno').val();
+
+
+            //  $.getJSON(uri + '/' + id + '/' + firstName)
+            $.getJSON(uri + '/' + firstName + '/' + lastName + '/' + mobileNo)
+              .done(function (data) {
+                  $('#product').text(formatItem(data));
+              })
+              .fail(function (jqXHR, textStatus, err) {
+                  $('#product').text('Error: ' + err);
+              });
+            alert('Record Added!!!');
+        }
+
+    </script>
+
+    <!--<script type="text/javascript">
+        //$(function () {
+        //    $("#submit-button").click(function () {
+        //        alert('clicked!');
+        //    });
+        //});
+        $("button#buttonAnswer1").on("click", hello);
+
+        function hello() {
+            console.log("hello world");
+        }
+        $(document).ready(function () {
+            $("#filter").click(function () {
+                alert('clicked!');
+            });
+        });
+        function hello() {
+            alert('hi')
+            ;
+        }
+    </script>-->
+</head>
+
+
+<body>
+
+    <div data-role="page">
+
+        <div data-role="header">
+            <h1>BCM Mobile</h1>
+        </div><!-- /header -->
+
+        <div data-role="content">
+            <p>Create BCM Contact</p>
+        </div><!-- /content -->
+
+        <form action="demo_form.asp">
+            First Name: <input type="text" data-theme="b" id="fname" name="fname"><br>
+            Last Name: <input type="text" data-theme="b" id="lname" name="lname"><br>
+            Mobile No: <input type="text" data-theme="b" id="mobileno" name="mobileno"><br>
+            <div align="center">
+
+            </div>
+            <input type="submit" id="submit-button" name="submit-button" onclick="addRecord();" data-role="button" data-icon="save" data-theme="b" value="Submit">
+            <input type="submit" id="reset-button" data-role="button" value="Cancel" data-icon="forward" data-theme="b">
+            <a href="index .html" data-role="button" data-icon="home" data-theme="b">Home</a>
+            <!--<input type="button" id="filter" name="filter" value="filter" onclick="hello();" />
+            <button id="buttonAnswer1" data-inline="true">Click me</button>-->
+        </form>
+
+
+    </div>
+</body>
+</html>
